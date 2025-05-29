@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Assignment | Zener Diode Experiment</title>
+  <meta name="description" content="Zener Diode Characteristics Experiment Summary">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <style>
+/* Grid layout */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card container */
+.info-item {
+  position: relative;
+  padding: 1.8rem 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  border: 1px solid #dbe6ff;
+}
+
+.info-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon box */
+.info-icon {
+  background: #4a6bff;
+  color: white;
+  font-size: 1.5rem;
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 6px 15px rgba(74, 107, 255, 0.4);
+}
+
+/* Info text */
+.info-content h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2a2a2a;
+  font-weight: 600;
+}
+
+.info-content p,
+.info-content ul {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.team-members {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+    /* Add these styles to match the experiment page */
+    body {
+      background-image: url("images/campus-background2.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #222;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    .hero {
+      height: 100vh;
+      background-image: url("images/campus-background2.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 20px;
+      z-index: 1;
+      border-bottom: none;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0);
+      z-index: -1;
+    }
+
+    .hero .container {
+      display: block;
+      z-index: 2;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 10px 5px;
+      text-align: center;
+    }
+
+    .primary-btn {
+      background-color: #4a6bff;
+      color: white;
+      border: 2px solid #4a6bff;
+    }
+
+    .primary-btn:hover {
+      background-color: #3a5bef;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Animation for the logo */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .hero img {
+      animation: float 3s ease-in-out infinite;
+    }
+    /* Submission Info Section */
+.topic-info {
+  margin-top: 3rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.info-item {
+  background: linear-gradient(145deg, #f0f4ff, #ffffff);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.info-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Animated Icon */
+.info-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: #4a6bff;
+  color: white;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 6px 12px rgba(74, 107, 255, 0.4);
+}
+
+/* Text Content */
+.info-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #2b2b2b;
+}
+
+.info-content p,
+.info-content ul {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
+
+.team-members {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin-top: 0.3rem;
+}
+
+/* Icon Float Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Physics<span>Assignment</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="experiment.html">Experiment</a></li>
+      </ul>
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <img src="images/download.png" alt="IIST NAAC A+ Logo" style="max-width: 200px; margin-bottom: 20px;">
+      <h1 data-aos="fade-up" data-aos-delay="100">Zener Diode Characteristics</h1>
+      <p data-aos="fade-up" data-aos-delay="200" class="hero-subtitle">Understanding voltage regulation through semiconductor devices</p>
+      <div data-aos="fade-up" data-aos-delay="300" style="display: flex; gap: 15px;">
+        <a href="experiment.html" class="btn primary-btn">
+          <i class="fas fa-flask"></i> Start Experiment
+        </a>
+        <a href="#about" class="btn primary-btn" style="background: transparent; border: 2px solid white;">
+          <i class="fas fa-info-circle"></i> Learn More
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+   
+
+     <!-- Team Info Section -->
+    <section class="topic-info card" data-aos="fade-up">
+      <div class="info-grid">
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="100">
+          <div class="info-icon">
+            <i class="fas fa-flask"></i>
+          </div>
+          <div class="info-content">
+            <h3>Experiment Topic</h3>
+            <p>Zener Diode Characteristics</p>
+          </div>
+        </div>
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="150">
+          <div class="info-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="info-content">
+            <h3>Submitted By</h3>
+            <ul class="team-members">
+              <li>Koushal Fand</li>
+              <li>Khushi Sabre</li>
+              <li>Koushik Sharma</li>
+              <li>Khushi Saini</li>
+              <li>Khushi Rathore</li>
+            </ul>
+          </div>
+        </div>
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="200">
+          <div class="info-icon">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <div class="info-content">
+            <h3>Submitted To</h3>
+            <p>Prof. Irfan Mansuri</p>
+          </div>
+        </div>
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="250">
+          <div class="info-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="info-content">
+            <h3>Submitted From</h3>
+            <p>Indore Institute of Science & Technology</p>
+          </div>
+        </div>
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="300">
+          <div class="info-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="info-content">
+            <h3>Date of Submission</h3>
+            <p id="submission-date"></p>
+          </div>
+        </div>
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="350">
+          <div class="info-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <div class="info-content">
+            <h3>Course</h3>
+            <p>Engineering Physics Lab</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="card" data-aos="fade-up">
+      <div class="section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>About The Experiment</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>The Zener diode characteristics experiment is a fundamental study in semiconductor physics that demonstrates the unique voltage regulation properties of Zener diodes. This experiment helps students understand how these devices maintain a constant voltage across their terminals when operated in the breakdown region.</p>
+          <p>Through this interactive platform, you'll be able to simulate the experiment, record observations, plot graphs, and analyze results - all while learning the underlying physics principles.</p>
+        </div>
+        <div class="about-image" data-aos="fade-left">
+          <img src="images/zener.svg" alt="Zener Diode Circuit" style="max-width: 100%; border-radius: 8px;">
+        </div>
+      </div>
+    </section>
+
+   
+    
+
+    <!-- Features Section -->
+    <section class="features card" data-aos="fade-up">
+      <div class="section-header">
+        <i class="fas fa-star"></i>
+        <h2>Key Features</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature" data-aos="flip-left" data-aos-delay="100">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Interactive Graphs</h3>
+          <p>Plot and analyze V-I characteristics with real-time graph plotting</p>
+        </div>
+        <div class="feature" data-aos="flip-left" data-aos-delay="200">
+          <div class="feature-icon">
+            <i class="fas fa-vial"></i>
+          </div>
+          <h3>Virtual Experiment</h3>
+          <p>Simulate the experiment digitally with sample data options</p>
+        </div>
+        <div class="feature" data-aos="flip-left" data-aos-delay="300">
+          <div class="feature-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>Detailed Theory</h3>
+          <p>Comprehensive explanation of Zener diode principles</p>
+        </div>
+        <div class="feature" data-aos="flip-left" data-aos-delay="400">
+          <div class="feature-icon">
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <h3>Viva Questions</h3>
+          <p>Prepare for your lab exams with important questions</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta card" data-aos="fade-up" style="text-align: center;">
+      <h2>Ready to Begin Your Experiment?</h2>
+      <p>Click the button below to start exploring the characteristics of Zener diodes</p>
+      <a href="experiment.html" class="btn primary-btn" style="font-size: 1.2rem; padding: 15px 30px;">
+        <i class="fas fa-arrow-right"></i> Start Experiment Now
+      </a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>PhysicsAssignment</h3>
+          <p>Comprehensive guides for physics laboratory experiments with interactive features and detailed explanations.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experiment.html">Experiment</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Team Members</h3>
+          <ul>
+            <li>Koushal Fand</li>
+            <li>Khushi Sabre</li>
+            <li>Koushik Sharma</li>
+            <li>Khushi Saini</li>
+            <li>Khushi Rathore</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Submitted to: Prof. Irfan Mansuri</p>
+        <p>Indore Institute of Science & Technology</p>
+        <p>&copy; <span id="current-year"></span> PhysicsAssignment. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+    
+    document.getElementById('submission-date').textContent = new Date().toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+    
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Mobile navigation toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

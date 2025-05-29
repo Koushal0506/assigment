@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zener Diode Experiment | Physics Assignment</title>
+    <meta name="description" content="Complete guide to Zener Diode V-I characteristics experiment">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Physics<span>Assignment</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment.html" class="active">Experiment</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+<style>
+body {
+    background-image: url("images/campus-background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #222;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero {
+    height: 100vh;
+    background-image: url("images/campus-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    z-index: 1;
+    border-bottom: none;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: -1;
+}
+
+.hero .container {
+    display: block;
+    z-index: 2;
+}
+
+.scroll-image-section {
+    height: 100vh;
+    background-image: url("images/campus-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+</style>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <img src="images/download.png" alt="IIST NAAC A+ Logo" style="max-width: 200px; margin-bottom: 20px;">
+            <h1 data-aos="fade-up">Zener Diode Characteristics Experiment</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Understanding voltage regulation through semiconductor devices</p>
+            <a href="#objective" class="btn primary-btn" data-aos="fade-up" data-aos-delay="200">Start Experiment <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </header>
+    <main id="main-content" class="container">
+  <!-- Your sections like Objective, Apparatus, Theory, etc. remain here -->
+</main>
+
+<script>
+window.addEventListener("scroll", function () {
+  const hero = document.querySelector(".hero-parallax");
+  if (window.scrollY > window.innerHeight * 0.8) {
+    hero.classList.add("sticky");
+  }
+});
+</script>
+    
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Objective Section -->
+        <section id="objective" class="card" data-aos="fade-up">
+            <div class="section-header">
+                <i class="fas fa-bullseye"></i>
+                <h2>Objective</h2>
+            </div>
+            <p>To determine the V-I characteristics of Zener Diode and understand its voltage regulation properties.</p>
+        </section>
+
+        <!-- Apparatus Section -->
+        <section id="apparatus" class="card" data-aos="fade-up">
+            <div class="section-header">
+                <i class="fas fa-tools"></i>
+                <h2>Apparatus Required</h2>
+            </div>
+            <div class="grid-container">
+                <div class="apparatus-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Zener Diode Trainer Board</h3>
+                </div>
+                <div class="apparatus-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-bolt"></i>
+                    <h3>DC Voltmeter (0-30V)</h3>
+                </div>
+                <div class="apparatus-item" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>DC Ammeter (0-30mA)</h3>
+                </div>
+                <div class="apparatus-item" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-plug"></i>
+                    <h3>Connecting Wires</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theory Section -->
+        <section id="theory" class="card" data-aos="fade-up">
+            <div class="section-header">
+                <i class="fas fa-book"></i>
+                <h2>Theory</h2>
+            </div>
+            
+            <div class="theory-content">
+                <div class="theory-text">
+                    <p>A Zener diode is a special type of diode designed to reliably allow current to flow "backwards" when a certain set reverse voltage, known as the Zener voltage, is reached. Zener diodes are manufactured with a great variety of Zener voltages and some are even variable.</p>
+                    <p>When the reverse bias on a crystal diode is increased, a critical voltage called breakdown voltage is reached where the reverse current increases sharply to a high value. The breakdown region is the knee of the reverse characteristics.</p>
+                    <p>The American scientist C. Zener first gave the satisfactory explanation of this breakdown of the junction. Therefore the breakdown voltage is sometimes called zener voltage and the sudden increase in current are known as zener current.</p>
+                </div>
+            </div>
+            <div class="key-points">
+                <h3>Key Characteristics:</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Sharp breakdown voltage (Zener voltage)</li>
+                    <li><i class="fas fa-check-circle"></i> Always reverse connected in circuits</li>
+                    <li><i class="fas fa-check-circle"></i> Maintains constant voltage across it in breakdown region</li>
+                    <li><i class="fas fa-check-circle"></i> Used for voltage regulation and protection</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Procedure Section -->
+        <section id="procedure" class="card" data-aos="fade-up">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2>Procedure</h2>
+            </div>
+            <img src="images/zener.svg" alt="Zener Diode Circuit" data-aos="fade-up">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'forward-bias')">Forward Bias</button>
+                <button class="tab-btn" onclick="openTab(event, 'reverse-bias')">Reverse Bias</button>
+            </div>
+            
+            <div id="forward-bias" class="tab-content" style="display: block;">
+                <h3>Forward Bias Characteristic</h3>
+                <ol class="procedure-steps">
+                    <li>Make all connections as shown in the circuit diagram.</li>
+                    <li>Connect positive end of power supply to positive of voltmeter.</li>
+                    <li>Connect negative end of power supply to negative of voltmeter.</li>
+                    <li>Connect one end of resistance Rs to anode of Zener diode.</li>
+                    <li>Connect cathode of Zener diode to positive socket of μA/mA meter.</li>
+                    <li>Select the current meter to 15 mA range using toggle switch.</li>
+                    <li>Switch ON the instrument and set the voltage to 0 volts.</li>
+                    <li>Increase the voltage slowly and note down corresponding current.</li>
+                </ol>
+                <div class="circuit-diagram">
+                <img src="images/zener-diode-circuit.svg" alt="Forward and Reverse Bias SVG Circuit">
+                    <p class="caption">Fig 1: Forward Bias Circuit Diagram</p>
+                </div>
+            </div>
+            
+            <div id="reverse-bias" class="tab-content">
+                <h3>Reverse Bias Characteristic</h3>
+                <ol class="procedure-steps">
+                    <li>Make all connections as shown in the reverse bias circuit.</li>
+                    <li>Connect positive end of power supply to positive of voltmeter.</li>
+                    <li>Connect negative end of power supply to negative of voltmeter.</li>
+                    <li>Connect one end of resistance Rs to cathode of zener diode.</li>
+                    <li>Connect anode of Zener diode to positive socket of μA/mA meter.</li>
+                    <li>Initially keep the current meter on 150 μA range.</li>
+                    <li>Switch ON the instrument and set voltage to 0 volts.</li>
+                    <li>Increase voltage slowly and note down corresponding current.</li>
+                    <li>Change scale to 15 mA range when current exceeds range.</li>
+                </ol>
+                <div class="circuit-diagram">
+                <img src="images/reverse-bias-zener.svg" alt="Reverse Bias Circuit Diagram">
+                    <p class="caption">Fig 2: Reverse Bias Circuit Diagram</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Observation Section -->
+        <section id="observations" class="card" data-aos="fade-up">
+            <div class="section-header">
+                <i class="fas fa-table"></i>
+                <h2>Observations</h2>
+            </div>
+            
+            <div class="observation-tables">
+                <div class="table-container" data-aos="fade-right">
+                    <h3>Forward Bias Characteristics</h3>
+                    <table class="reading-table" id="forward-bias-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Voltage (V)</th>
+                                <th>Current (mA)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><input type="number" step="0.1" class="reading-input" placeholder="0.1"></td>
+                                <td><input type="number" step="0.01" class="reading-input" placeholder="0.05"></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><input type="number" step="0.1" class="reading-input" placeholder="0.2"></td>
+                                <td><input type="number" step="0.01" class="reading-input" placeholder="0.12"></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><input type="number" step="0.1" class="reading-input" placeholder="0.3"></td>
+                                <td><input type="number" step="0.01" class="reading-input" placeholder="0.25"></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><input type="number" step="0.1" class="reading-input" placeholder="0.4"></td>
+                                <td><input type="number" step="0.01" class="reading-input" placeholder="0.42"></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><input type="number" step="0.1" class="reading-input" placeholder="0.5"></td>
+                                <td><input type="number" step="0.01" class="reading-input" placeholder="0.65"></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><input type="number" step="0.1" class="reading-input" placeholder="0.6"></td>
+                                <td><input type="number" step="0.01" class="reading-input" placeholder="1.2"></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><input type="number" step="0.1" class="reading-input" placeholder="0.7"></td>
+                                <td><input type="number" step="0.01" class="reading-input" placeholder="2.5"></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><input type="number" step="0.1" class="reading-input" placeholder="0.8"></td>
+                                <td><input type="number" step="0.01" class="reading-input" placeholder="5.0"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+               <!-- In the reverse bias table section, modify the placeholder values to be negative -->
+                <h3>Reverse Bias Characteristics</h3>
+<table class="reading-table" id="reverse-bias-table">
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Voltage (V)</th>
+            <th>Current (mA)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><input type="number" step="0.1" class="reading-input" placeholder="-1.0"></td>
+            <td><input type="number" step="0.01" class="reading-input" placeholder="-0.01"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><input type="number" step="0.1" class="reading-input" placeholder="-2.0"></td>
+            <td><input type="number" step="0.01" class="reading-input" placeholder="-0.02"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><input type="number" step="0.1" class="reading-input" placeholder="-3.0"></td>
+            <td><input type="number" step="0.01" class="reading-input" placeholder="-0.03"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><input type="number" step="0.1" class="reading-input" placeholder="-4.0"></td>
+            <td><input type="number" step="0.01" class="reading-input" placeholder="-0.04"></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><input type="number" step="0.1" class="reading-input" placeholder="-5.0"></td>
+            <td><input type="number" step="0.01" class="reading-input" placeholder="-0.05"></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><input type="number" step="0.1" class="reading-input" placeholder="-5.1"></td>
+            <td><input type="number" step="0.01" class="reading-input" placeholder="-0.5"></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><input type="number" step="0.1" class="reading-input" placeholder="-5.2"></td>
+            <td><input type="number" step="0.01" class="reading-input" placeholder="-1.5"></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><input type="number" step="0.1" class="reading-input" placeholder="-5.3"></td>
+            <td><input type="number" step="0.01" class="reading-input" placeholder="-3.0"></td>
+        </tr>
+    </tbody>
+</table>
+                </div>
+            </div>
+            
+            <div class="graph-controls" data-aos="fade-up">
+                <button class="btn primary-btn plot-btn" onclick="plotGraphs()">
+                    <i class="fas fa-chart-line"></i> Plot Graphs
+                </button>
+                <button class="btn secondary-btn reset-btn" onclick="resetReadings()">
+                    <i class="fas fa-redo"></i> Reset Readings
+                </button>
+                <button class="btn tertiary-btn sample-btn" onclick="loadSampleData()">
+                    <i class="fas fa-vial"></i> Load Sample Data
+                </button>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="card" data-aos="fade-up">
+            <div class="section-header">
+                <i class="fas fa-chart-line"></i>
+                <h2>Results & Graphs</h2>
+            </div>
+            
+            <div class="graph-container">
+                <div class="graph-card" data-aos="fade-right">
+                    <h3>Forward Bias Characteristics</h3>
+                    <div class="graph-wrapper">
+                        <canvas id="forwardGraph"></canvas>
+                    </div>
+                    <div class="graph-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #3498db;"></span>
+                            <span>Experimental Data</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #e74c3c;"></span>
+                            <span>Theoretical Curve</span>
+                        </div>
+                    </div>
+                    <div class="graph-parameters">
+                        <div class="parameter">
+                            <span>Knee Voltage:</span>
+                            <span id="knee-voltage">-- V</span>
+                        </div>
+                        <div class="parameter">
+                            <span>Dynamic Resistance:</span>
+                            <span id="forward-resistance">-- Ω</span>
+                        </div>
+                    </div>
+                    <p class="graph-caption">Fig 3: Forward Bias V-I Characteristics showing knee voltage</p>
+                </div>
+                
+                <div class="graph-card" data-aos="fade-left">
+                    <h3>Reverse Bias Characteristics</h3>
+                    <div class="graph-wrapper">
+                        <canvas id="reverseGraph"></canvas>
+                    </div>
+                    <div class="graph-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #3498db;"></span>
+                            <span>Experimental Data</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #e74c3c;"></span>
+                            <span>Theoretical Curve</span>
+                        </div>
+                    </div>
+                    <div class="graph-parameters">
+                        <div class="parameter">
+                            <span>Breakdown Voltage:</span>
+                            <span id="breakdown-voltage">-- V</span>
+                        </div>
+                        <div class="parameter">
+                            <span>Dynamic Resistance:</span>
+                            <span id="reverse-resistance">-- Ω</span>
+                        </div>
+                    </div>
+                    <p class="graph-caption">Fig 4: Reverse Bias V-I Characteristics showing breakdown voltage</p>
+                </div>
+            </div>
+            
+            <div class="result-calculations" data-aos="fade-up">
+                <h3>Calculated Parameters</h3>
+                <div class="parameters-grid">
+                    <div class="parameter-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="parameter-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="parameter-content">
+                            <h4>Knee Voltage</h4>
+                            <p id="calculated-knee-voltage">-- V</p>
+                        </div>
+                    </div>
+                    <div class="parameter-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="parameter-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="parameter-content">
+                            <h4>Breakdown Voltage</h4>
+                            <p id="calculated-breakdown-voltage">-- V</p>
+                        </div>
+                    </div>
+                    <div class="parameter-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="parameter-icon">
+                            <i class="fas fa-resistance"></i>
+                        </div>
+                        <div class="parameter-content">
+                            <h4>Forward Resistance</h4>
+                            <p id="calculated-forward-resistance">-- Ω</p>
+                        </div>
+                    </div>
+                    <div class="parameter-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="parameter-icon">
+                            <i class="fas fa-resistance"></i>
+                        </div>
+                        <div class="parameter-content">
+                            <h4>Reverse Resistance</h4>
+                            <p id="calculated-reverse-resistance">-- Ω</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Precautions Section -->
+        <section id="precautions" class="card" data-aos="fade-up">
+            <div class="section-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Precautions</h2>
+            </div>
+            
+            <div class="precaution-list">
+                <div class="precaution" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Ensure all connections are proper before switching on the power supply</p>
+                </div>
+                <div class="precaution" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Start with zero voltage and increase gradually</p>
+                </div>
+                <div class="precaution" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Change current meter range appropriately when current exceeds range</p>
+                </div>
+                <div class="precaution" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Do not exceed maximum ratings of the components</p>
+                </div>
+                <div class="precaution" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Record observations carefully without parallax error</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Viva Questions Section -->
+        <section id="viva" class="card" data-aos="fade-up">
+            <div class="section-header">
+                <i class="fas fa-question-circle"></i>
+                <h2>Viva Questions</h2>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-item" data-aos="fade-up">
+                    <button class="accordion-btn">What is the basic difference between a normal diode and Zener diode?<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content">
+                        <p>A normal diode is designed to conduct current in the forward direction while blocking current in the reverse direction. A Zener diode, while operating in the forward direction is similar to a normal diode, but is specially designed to allow current to flow in the reverse direction when the voltage exceeds the Zener breakdown voltage.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-aos="fade-up">
+                    <button class="accordion-btn">Explain Zener breakdown and avalanche multiplication<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content">
+                        <p><strong>Zener breakdown</strong> occurs in heavily doped diodes where the depletion layer is very thin. The strong electric field breaks the covalent bonds directly (field ionization).</p>
+                        <p><strong>Avalanche breakdown</strong> occurs in lightly doped diodes where the depletion layer is wider. Here, minority carriers gain enough energy to knock out electrons from covalent bonds, creating an avalanche effect.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-aos="fade-up">
+                    <button class="accordion-btn">Explain Zener diode as a voltage regulator<i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-content">
+                        <p>A Zener diode can maintain a nearly constant voltage across its terminals when operated in the breakdown region. When connected in parallel with a variable load and with a series resistor, it maintains a constant output voltage despite variations in input voltage or load current by adjusting the current through itself.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Physics Assignment</h3>
+                    <p>Comprehensive guides for physics laboratory experiments with interactive features and detailed explanations.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="experiment.html">Experiment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Team Members</h3>
+                    <ul>
+                        <li>Koushal Fand</li>
+                        <li>Khushi Sabre</li>
+                        <li>Koushik Sharma</li>
+                        <li>Khushi Saini</li>
+                        <li>Khushi Rathore</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Submitted to: Prof. Irfan Mansuri</p>
+                <p>Indore Institute of Science & Technology</p>
+                <p>&copy; <span id="current-year"></span> Physics Assignment. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+       <!-- Add this before the closing </body> tag -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+ 
+    <script>
+
+         const accordionBtns = document.querySelectorAll('.accordion-btn');
+
+  accordionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Collapse all others
+      accordionBtns.forEach(otherBtn => {
+        if (otherBtn !== btn) {
+          otherBtn.classList.remove('active');
+          otherBtn.nextElementSibling.style.maxHeight = null;
+        }
+      });
+
+      // Toggle current
+      btn.classList.toggle('active');
+      const content = btn.nextElementSibling;
+      if (btn.classList.contains('active')) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        content.style.maxHeight = null;
+      }
+    });
+  });
+       
+
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = 'none';
+                tabButtons[i].classList.remove('active');
+            }
+            
+            document.getElementById(tabName).style.display = 'block';
+            evt.currentTarget.classList.add('active');
+        }
+
+     
+        
+       
+        // Graph variables
+        let forwardGraph, reverseGraph;
+        
+        // Plot graphs function
+        function plotGraphs() {
+            // Get data from tables
+            const forwardData = getTableData('forward-bias-table');
+            const reverseData = getTableData('reverse-bias-table');
+            
+            // Plot forward bias graph
+            plotForwardGraph(forwardData);
+            
+            // Plot reverse bias graph
+            plotReverseGraph(reverseData);
+            
+            // Calculate and display parameters
+            calculateParameters(forwardData, reverseData);
+        }
+        
+        // Get data from HTML tables
+        function getTableData(tableId) {
+            const table = document.getElementById(tableId);
+            const rows = table.querySelectorAll('tbody tr');
+            const data = [];
+            
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const voltage = parseFloat(cells[1].querySelector('input').value);
+                const current = parseFloat(cells[2].querySelector('input').value);
+                
+                if (!isNaN(voltage)) {
+                    data.push({
+                        voltage: voltage,
+                        current: isNaN(current) ? 0 : current
+                    });
+                }
+            });
+            
+            return data;
+        }
+        
+        // Plot forward bias graph
+        function plotForwardGraph(data) {
+            const ctx = document.getElementById('forwardGraph').getContext('2d');
+            
+            // Sort data by voltage
+            data.sort((a, b) => a.voltage - b.voltage);
+            
+            const voltages = data.map(item => item.voltage);
+            const currents = data.map(item => item.current);
+            
+            if (forwardGraph) {
+                forwardGraph.destroy();
+            }
+            
+            forwardGraph = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: voltages,
+                    datasets: [
+                        {
+                            label: 'Experimental Data',
+                            data: currents,
+                            borderColor: '#3498db',
+                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.1,
+                            fill: true
+                        },
+                        {
+                            label: 'Theoretical Curve',
+                            data: voltages.map(v => v > 0.6 ? Math.min(Math.exp(40 * (v - 0.6)), 10) : 0),
+
+                            borderColor: '#e74c3c',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            tension: 0.1,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Voltage (V)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Current (mA)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} mA`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Plot reverse bias graph
+function plotReverseGraph(data) {
+    const ctx = document.getElementById('reverseGraph').getContext('2d');
+    
+    // Sort data by voltage (most negative first)
+    data.sort((a, b) => a.voltage - b.voltage);
+    
+    const voltages = data.map(item => item.voltage);
+    const currents = data.map(item => item.current);
+    
+    if (reverseGraph) {
+        reverseGraph.destroy();
+    }
+    
+    reverseGraph = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: voltages,
+            datasets: [
+                {
+                    label: 'Experimental Data',
+                    data: currents,
+                    borderColor: '#3498db',
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.1,
+                    fill: true
+                },
+                {
+                    label: 'Theoretical Curve',
+                    data: voltages.map(v => v < -5 ? -10*(Math.abs(v)-5) : 0),
+                    borderColor: '#e74c3c',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    tension: 0.1,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Voltage (V)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value + ' V';
+                        }
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Current (mA)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value + ' mA';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} mA`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+        // Calculate parameters
+        function calculateParameters(forwardData, reverseData) {
+            // Calculate knee voltage (forward bias)
+            const kneeVoltage = findKneeVoltage(forwardData);
+            document.getElementById('knee-voltage').textContent = kneeVoltage.toFixed(2) + ' V';
+            document.getElementById('calculated-knee-voltage').textContent = kneeVoltage.toFixed(2) + ' V';
+            
+            // Calculate breakdown voltage (reverse bias)
+            const breakdownVoltage = findBreakdownVoltage(reverseData);
+            document.getElementById('breakdown-voltage').textContent = breakdownVoltage.toFixed(2) + ' V';
+            document.getElementById('calculated-breakdown-voltage').textContent = breakdownVoltage.toFixed(2) + ' V';
+            
+            // Calculate dynamic resistances
+            const forwardResistance = calculateDynamicResistance(forwardData, kneeVoltage);
+            const reverseResistance = calculateDynamicResistance(reverseData, breakdownVoltage);
+            
+            document.getElementById('forward-resistance').textContent = forwardResistance.toFixed(2) + ' Ω';
+            document.getElementById('reverse-resistance').textContent = reverseResistance.toFixed(2) + ' Ω';
+            
+            document.getElementById('calculated-forward-resistance').textContent = forwardResistance.toFixed(2) + ' Ω';
+            document.getElementById('calculated-reverse-resistance').textContent = reverseResistance.toFixed(2) + ' Ω';
+        }
+        
+        // Find knee voltage (where current starts increasing rapidly)
+        function findKneeVoltage(data) {
+            const sortedData = [...data].sort((a, b) => a.voltage - b.voltage);
+            let maxSlope = 0;
+            let kneeVoltage = 0;
+            
+            for (let i = 1; i < sortedData.length; i++) {
+                const deltaV = sortedData[i].voltage - sortedData[i-1].voltage;
+                const deltaI = sortedData[i].current - sortedData[i-1].current;
+                
+                if (deltaV > 0) {
+                    const slope = deltaI / deltaV;
+                    if (slope > maxSlope) {
+                        maxSlope = slope;
+                        kneeVoltage = sortedData[i].voltage;
+                    }
+                }
+            }
+            
+            return kneeVoltage;
+        }
+        
+        // Find breakdown voltage (where current starts increasing rapidly in reverse)
+function findBreakdownVoltage(data) {
+    const sortedData = [...data].sort((a, b) => a.voltage - b.voltage);
+    let maxSlope = 0;
+    let breakdownVoltage = sortedData[0].voltage;
+
+    for (let i = 1; i < sortedData.length; i++) {
+        const deltaV = sortedData[i].voltage - sortedData[i - 1].voltage;
+        const deltaI = sortedData[i].current - sortedData[i - 1].current;
+
+        // We're looking for where reverse current rapidly increases
+        if (deltaV !== 0) {
+            const slope = Math.abs(deltaI / deltaV);
+            if (slope > maxSlope) {
+                maxSlope = slope;
+                breakdownVoltage = sortedData[i].voltage;
+            }
+        }
+    }
+
+    return breakdownVoltage;
+}
+function calculateDynamicResistance(data, operatingVoltage) {
+    const sortedData = [...data].sort((a, b) => a.voltage - b.voltage);
+
+    // Filter a small window around the operating voltage
+    const window = sortedData.filter(point =>
+        Math.abs(point.voltage - operatingVoltage) <= 0.1
+    );
+
+    if (window.length < 2) return 0;
+
+    // Linear regression (least squares method)
+    let sumV = 0, sumI = 0, sumVI = 0, sumVV = 0;
+    for (let point of window) {
+        sumV += point.voltage;
+        sumI += point.current;
+        sumVI += point.voltage * point.current;
+        sumVV += point.voltage * point.voltage;
+    }
+
+    const n = window.length;
+    const slope = (n * sumVI - sumV * sumI) / (n * sumVV - sumV * sumV);
+
+    if (slope !== 0) {
+        return Math.abs(1 / slope * 1000); // in ohms, mA to A
+    }
+
+    return 0;
+}
+
+          
+        
+        // Reset readings
+        function resetReadings() {
+            const inputs = document.querySelectorAll('.reading-input');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+            
+            // Clear graphs if they exist
+            if (forwardGraph) {
+                forwardGraph.destroy();
+                forwardGraph = null;
+            }
+            
+            if (reverseGraph) {
+                reverseGraph.destroy();
+                reverseGraph = null;
+            }
+            
+            // Reset parameter displays
+            document.getElementById('knee-voltage').textContent = '-- V';
+            document.getElementById('breakdown-voltage').textContent = '-- V';
+            document.getElementById('forward-resistance').textContent = '-- Ω';
+            document.getElementById('reverse-resistance').textContent = '-- Ω';
+            
+            document.getElementById('calculated-knee-voltage').textContent = '-- V';
+            document.getElementById('calculated-breakdown-voltage').textContent = '-- V';
+            document.getElementById('calculated-forward-resistance').textContent = '-- Ω';
+            document.getElementById('calculated-reverse-resistance').textContent = '-- Ω';
+        }
+        
+        // Load sample data
+        function loadSampleData() {
+            // Forward bias sample data
+            const forwardInputs = document.querySelectorAll('#forward-bias-table .reading-input');
+            const forwardValues = [
+                [0.1, 0.05], [0.2, 0.12], [0.3, 0.25], [0.4, 0.42],
+                [0.5, 0.65], [0.6, 1.2], [0.7, 2.5], [0.8, 5.0]
+            ];
+            
+            forwardInputs.forEach((input, index) => {
+                const row = Math.floor(index / 2);
+                const col = index % 2;
+                if (col === 0) {
+                    input.value = forwardValues[row][0];
+                } else {
+                    input.value = forwardValues[row][1];
+                }
+            });
+            
+            /// Reverse bias sample data
+    const reverseInputs = document.querySelectorAll('#reverse-bias-table .reading-input');
+    const reverseValues = [
+        [-1.0, -0.01], [-2.0, -0.02], [-3.0, -0.03], [-4.0, -0.04],
+        [-5.0, -0.05], [-5.1, -0.5], [-5.2, -1.5], [-5.3, -3.0]
+    ];
+    
+    reverseInputs.forEach((input, index) => {
+        const row = Math.floor(index / 2);
+        const col = index % 2;
+        if (col === 0) {
+            input.value = reverseValues[row][0];
+        } else {
+            input.value = reverseValues[row][1];
+        }
+    });
+}
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+       window.onload = function () {
+  loadSampleData();
+  plotGraphs();
+};
+
+
+
+    </script>
+</body>
+</html>
