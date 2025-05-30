@@ -10,6 +10,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <style>
+@media (max-width: 768px) {
+  .graph-card {
+    width: 100%;
+    padding: 1.5rem 1rem;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .graph-wrapper {
+    width: 100%;
+    height: 300px; /* ⬅️ This ensures the graph doesn't collapse */
+    position: relative;
+    overflow-x: auto;
+    border-radius: 12px;
+    background: #f9f9f9;
+    padding: 0.5rem;
+  }
+
+  .graph-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
+
+  .graph-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .legend-item span {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .graph-caption {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 1rem;
+  }
+
+  .graph-parameters {
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .graph-parameters .parameter {
+    flex: 1 1 45%;
+    background: #f1f1f1;
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -681,89 +752,23 @@ window.addEventListener("scroll", function () {
         }
         
         // Plot forward bias graph
-        function plotForwardGraph(data) {
-            const ctx = document.getElementById('forwardGraph').getContext('2d');
-            
-            // Sort data by voltage
-            data.sort((a, b) => a.voltage - b.voltage);
-            
-            const voltages = data.map(item => item.voltage);
-            const currents = data.map(item => item.current);
-            
-            if (forwardGraph) {
-                forwardGraph.destroy();
-            }
-            
-            forwardGraph = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: voltages,
-                    datasets: [
-                        {
-                            label: 'Experimental Data',
-                            data: currents,
-                            borderColor: '#3498db',
-                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                            borderWidth: 2,
-                            tension: 0.1,
-                            fill: true
-                        },
-                        {
-                            label: 'Theoretical Curve',
-                            data: voltages.map(v => v > 0.6 ? Math.min(Math.exp(40 * (v - 0.6)), 10) : 0),
+  function plotForwardGraph(data) {
+    const ctx = document.getElementById('forwardGraph').getContext('2d');
 
-                            borderColor: '#e74c3c',
-                            borderWidth: 2,
-                            borderDash: [5, 5],
-                            tension: 0.1,
-                            fill: false
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Voltage (V)'
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Current (mA)'
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} mA`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        
-        // Plot reverse bias graph
-function plotReverseGraph(data) {
-    const ctx = document.getElementById('reverseGraph').getContext('2d');
-    
-    // Sort data by voltage (most negative first)
+    // Gradient for forward graph
+    let gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient.addColorStop(0, 'rgba(75, 108, 183, 0.5)');
+    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
     data.sort((a, b) => a.voltage - b.voltage);
-    
     const voltages = data.map(item => item.voltage);
     const currents = data.map(item => item.current);
-    
-    if (reverseGraph) {
-        reverseGraph.destroy();
+
+    if (forwardGraph) {
+        forwardGraph.destroy();
     }
-    
-    reverseGraph = new Chart(ctx, {
+
+    forwardGraph = new Chart(ctx, {
         type: 'line',
         data: {
             labels: voltages,
@@ -771,15 +776,18 @@ function plotReverseGraph(data) {
                 {
                     label: 'Experimental Data',
                     data: currents,
-                    borderColor: '#3498db',
-                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                    borderWidth: 2,
-                    tension: 0.1,
-                    fill: true
+                    borderColor: '#4b6cb7',
+                    backgroundColor: gradient,
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#4b6cb7',
+                    pointHoverRadius: 6
                 },
                 {
                     label: 'Theoretical Curve',
-                    data: voltages.map(v => v < -5 ? -10*(Math.abs(v)-5) : 0),
+                    data: voltages.map(v => v > 0.6 ? Math.min(Math.exp(40 * (v - 0.6)), 10) : 0),
                     borderColor: '#e74c3c',
                     borderWidth: 2,
                     borderDash: [5, 5],
@@ -790,42 +798,120 @@ function plotReverseGraph(data) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Voltage (V)'
-                    },
-                    ticks: {
-                        callback: function(value) {
-                            return value + ' V';
-                        }
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Current (mA)'
-                    },
-                    ticks: {
-                        callback: function(value) {
-                            return value + ' mA';
-                        }
-                    }
-                }
+                x: { title: { display: true, text: 'Voltage (V)' } },
+                y: { title: { display: true, text: 'Current (mA)' } }
             },
             plugins: {
                 tooltip: {
+                    backgroundColor: '#333',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    borderColor: '#888',
+                    borderWidth: 1,
+                    cornerRadius: 8,
                     callbacks: {
                         label: function(context) {
                             return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} mA`;
                         }
+                    }
+                },
+                legend: {
+                    labels: {
+                        font: { size: 14, family: 'Poppins' },
+                        color: '#333'
                     }
                 }
             }
         }
     });
 }
+
+        
+        // Plot reverse bias graph
+function plotReverseGraph(data) {
+    const ctx = document.getElementById('reverseGraph').getContext('2d');
+
+    // Gradient for reverse graph
+    let gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient.addColorStop(0, 'rgba(231, 76, 60, 0.4)');
+    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+    data.sort((a, b) => a.voltage - b.voltage);
+    const voltages = data.map(item => item.voltage);
+    const currents = data.map(item => item.current);
+
+    if (reverseGraph) {
+        reverseGraph.destroy();
+    }
+
+    reverseGraph = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: voltages,
+            datasets: [
+                {
+                    label: 'Experimental Data',
+                    data: currents,
+                    borderColor: '#e74c3c',
+                    backgroundColor: gradient,
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#e74c3c',
+                    pointHoverRadius: 6
+                },
+                {
+                    label: 'Theoretical Curve',
+                    data: voltages.map(v => v < -5 ? -10 * (Math.abs(v) - 5) : 0),
+                    borderColor: '#4b6cb7',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    tension: 0.1,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    title: { display: true, text: 'Voltage (V)' },
+                    ticks: { callback: (value) => `${value} V` }
+                },
+                y: {
+                    title: { display: true, text: 'Current (mA)' },
+                    ticks: { callback: (value) => `${value} mA` }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    backgroundColor: '#333',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    borderColor: '#888',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} mA`;
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        font: { size: 14, family: 'Poppins' },
+                        color: '#333'
+                    }
+                }
+            }
+        }
+    });
+}
+
         // Calculate parameters
         function calculateParameters(forwardData, reverseData) {
             // Calculate knee voltage (forward bias)
