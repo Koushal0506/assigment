@@ -1,0 +1,313 @@
+/* Enhanced Base Styles */
+:root {
+  --primary: #4a6bff;
+  --primary-dark: #3a5bef;
+  --secondary: #2ecc71;
+  --secondary-dark: #27ae60;
+  --accent: #f39c12;
+  --accent-dark: #e67e22;
+  --dark: #2c3e50;
+  --light: #ecf0f1;
+  --gray: #95a5a6;
+  --danger: #e74c3c;
+  --danger-dark: #c0392b;
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --info: #3498db;
+  --white: #ffffff;
+  --black: #222222;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: all 0.15s ease;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced Cursor Styles */
+body {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%234a6bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>'), auto;
+}
+
+a, button, .btn, input, textarea, select, .nav-links li, .accordion-btn, .tab-btn {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%234a6bff" stroke="%234a6bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/></svg>'), pointer;
+}
+
+/* Enhanced Button Interactions */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  transition: var(--transition);
+  will-change: transform;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  transform: translateY(100%);
+  transition: var(--transition);
+  z-index: 0;
+}
+
+.btn:hover::before {
+  transform: translateY(0);
+}
+
+.btn:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  box-shadow: var(--shadow-md);
+}
+
+.primary-btn:hover {
+  box-shadow: 0 8px 15px rgba(74, 107, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Enhanced Card Hover Effects */
+.card {
+  transition: var(--transition);
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.card:hover {
+  transform: translateY(-5px) rotateX(1deg) rotateY(1deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Enhanced Input Focus Effects */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.2);
+  transform: scale(1.02);
+  transition: var(--transition);
+}
+
+/* Ripple Effect for Buttons */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Enhanced Accordion */
+.accordion-btn {
+  transition: var(--transition);
+}
+
+.accordion-btn:hover {
+  background-color: rgba(74, 107, 255, 0.1);
+}
+
+.accordion-btn.active {
+  background: linear-gradient(135deg, rgba(74, 107, 255, 0.1), rgba(74, 107, 255, 0.2));
+}
+
+.accordion-content {
+  transition: max-height 0.3s ease-out, padding 0.3s ease;
+}
+
+/* Enhanced Tab System */
+.tab-btn {
+  transition: var(--transition);
+  position: relative;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: rgba(74, 107, 255, 0.05);
+}
+
+/* Pulse Animation for Important Elements */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(74, 107, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(74, 107, 255, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Enhanced Loading States */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.loading {
+  background: linear-gradient(to right, #f6f7f8 0%, #e9ecef 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-size: 800px 104px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Enhanced Focus States */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth Scroll Offset for Fixed Header */
+:target {
+  scroll-margin-top: 80px;
+}
+
+/* Enhanced Table Interactions */
+.reading-table tr {
+  transition: var(--transition-fast);
+}
+
+.reading-table tr:hover {
+  transform: translateX(5px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Enhanced Tooltips */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--dark);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: var(--transition-fast);
+  pointer-events: none;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Mobile touch feedback */
+  button:active, .btn:active, a:active {
+    transform: scale(0.96);
+  }
+}
+
+/* Micro-interaction for icons */
+.icon-hover {
+  transition: var(--transition);
+}
+
+.icon-hover:hover {
+  transform: translateY(-3px) rotate(5deg);
+}
+
+/* Background pattern for subtle texture */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(74, 107, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.3;
+}
