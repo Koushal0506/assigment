@@ -475,6 +475,11 @@ h1, h2, h3, h4 {
     justify-content: space-between;
     align-items: center;
 }
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
 
 .accordion-btn:hover {
     background-color: #e9ecef;
